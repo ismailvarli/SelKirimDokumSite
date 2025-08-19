@@ -1,0 +1,85 @@
+
+@{
+    var title = ViewData["Title"] as string ?? "Sel Kırım Döküm | Yıkım & Kırım";
+    var desc = ViewData["Description"] as string ?? "Yıkım, kırım, fabrika sökümü.";
+}
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@title</title>
+    <meta name="description" content="@desc" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/site.append.css" />
+    <link rel="stylesheet" href="~/css/site.append.extra.css" />
+    <link rel="stylesheet" href="~/css/site.hamburger.css" />
+    <script defer src="~/js/site.js"></script>
+    <script defer src="~/js/site.hamburger.js"></script>
+    <meta name="theme-color" content="#111827" />
+</head>
+<body class="has-drawer">
+    <header class="header">
+        <div class="container flex between center">
+            <button id="hamburger" class="hamburger" aria-label="Menüyü aç" aria-controls="mobileDrawer" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+            <a href="/Home/Index">
+                <img src="/images/gallery/selkirimdokumlogo.png" alt="Sel Kırım Döküm Logo" class="main-logo" style="width:110px; height:auto; max-width:100%;" />
+            </a>
+            <nav class="nav desktop-only">
+                <a href="/">Anasayfa</a>
+                <a href="/Home/About">Hakkımızda</a>
+                <a href="/Services">Hizmetler</a>
+                <a href="/Blog">Blog</a>
+                <a href="/Home/Contact">İletişim</a>
+                <a class="cta" href="/#kesif-form">Ücretsiz Keşif</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Mobile Drawer -->
+    <aside id="mobileDrawer" class="drawer" aria-hidden="true">
+        <div class="drawer-header">
+            <span>Menü</span>
+            <button id="drawerClose" class="drawer-close" aria-label="Kapat">×</button>
+        </div>
+        <nav class="drawer-nav">
+            <a href="/Home/Index">Anasayfa</a>
+            <a href="/Home/About">Hakkımızda</a>
+            <a href="/Services">Hizmetler</a>
+            <a href="/Blog">Blog</a>
+            <a href="/Home/Contact">İletişim</a>
+            <a class="cta" href="/#kesif-form">Ücretsiz Keşif</a>
+        </nav>
+    </aside>
+    <div id="backdrop" class="backdrop" hidden></div>
+
+    <main role="main">
+        @RenderBody()
+    </main>
+
+    <footer class="footer">
+        <div class="container grid-3">
+            <div>
+                <h4>Sel Kırım Döküm</h4>
+                <p>Endüstriyel yıkım, kırım ve söküm projelerinde uçtan uca çözümler.</p>
+            </div>
+            <div>
+                <h4>İletişim</h4>
+                <p>Telefon: <a href="tel:+905379202736">0537 920 27 36</a><br/>E-posta: selkirimdokum@gmail.com</p>
+                <p>Adres: İstanbul / Türkiye</p>
+            </div>
+            <div>
+                <h4>Çalışma Saatleri</h4>
+                <p>Hafta içi: 08:00 - 19:00<br/>Cumartesi: 09:00 - 17:00</p>
+            </div>
+        </div>
+        <div class="footer-bottom">© @DateTime.Now.Year Sel Kırım Döküm • Tüm hakları saklıdır.</div>
+    </footer>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

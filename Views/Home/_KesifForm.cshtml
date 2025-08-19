@@ -1,0 +1,33 @@
+<section id="kesif-form" class="section" style="background:#f8fafc;">
+  <div class="container">
+    <h2>Ücretsiz Keşif Talebi</h2>
+    @Html.Partial("_Alerts")
+    <form method="post" action="/Appointment/Create" enctype="multipart/form-data">
+      <div class="row">
+        <div><label>Ad Soyad*</label><input name="Name" required /></div>
+        <div><label>Telefon*</label><input name="Phone" required /></div>
+        <div class="full"><label>E-Posta</label><input name="Email" type="email" /></div>
+        <div><label>İl</label><input name="City" /></div>
+        <div><label>İlçe</label><input name="District" /></div>
+        <div class="full"><label>Adres*</label><input name="Address" required /></div>
+        <div><label>Hizmet*</label>
+          <select name="Service" required>
+            <option value="Bina Yıkımı">Bina Yıkımı</option>
+            <option value="Fabrika & Endüstriyel Söküm">Fabrika & Endüstriyel Söküm</option>
+            <option value="Kırım (Beton/Duvar/Şap)">Kırım (Beton/Duvar/Şap)</option>
+            <option value="Hafriyat & Moloz Atımı">Hafriyat & Moloz Atımı</option>
+            <option value="Beton Kesme/Delme">Beton Kesme/Delme</option>
+            <option value="Çatı & Asbest Sökümü">Çatı & Asbest Sökümü</option>
+          </select>
+        </div>
+        <div><label>İstenen Tarih</label><input name="DesiredDate" type="date" /></div>
+        <div><label>Tahmini Bütçe</label><input name="Budget" placeholder="Örn. 150.000 ₺" /></div>
+        <div><label>Alan (m²)</label><input name="ProjectArea" type="number" min="0" /></div>
+        <div><label>Kat Adedi</label><input name="Floors" type="number" min="0" /></div>
+        <div class="full"><label>Proje Detayı</label><textarea name="Message" rows="5" placeholder="Örn. yapının yaşı, erişim kısıtları, özel talepler"></textarea></div>
+        <div class="full"><label>Ek Dosya (opsiyonel)</label><input name="Attachment" type="file" /></div>
+      </div>
+      <button class="btn" type="submit">Talebi Gönder</button>
+    </form>
+  </div>
+</section>

@@ -1,0 +1,374 @@
+@{
+    ViewData["Title"] = "İletişim | Sel Kırım Döküm";
+    ViewData["Description"] = "Keşif ve teklif için iletişim: 0532 543 68 37 | info@selkirimdokum.com";
+}
+<section class="contact section">
+    <div class="container">
+        <h1 class="section-title">İletişim</h1>
+
+        @Html.Partial("_Alerts")
+
+        <div class="grid-2">
+            <!-- SOL SÜTUN: Bilgi + Bölgeler -->
+            <aside class="info-card">
+                <div class="info-block">
+                    <h3>Hızlı İletişim</h3>
+                    <p>
+                        <strong>Telefon:</strong>
+                        <a class="link" href="tel:+905325436837" aria-label="Telefon ara 0532 543 68 37">0532 543 68 37</a><br />
+                        <strong>E-posta:</strong>
+                        <a class="link" href="mailto:info@selkirimdokum.com" aria-label="E posta gönder">info@selkirimdokum.com</a>
+                    </p>
+                    <p><strong>Adres:</strong> İstanbul, Türkiye</p>
+                    <p><strong>Çalışma Saatleri:</strong> Hafta içi 08:00–19:00, Cumartesi 09:00–17:00</p>
+                </div>
+
+                <div class="map-card" aria-label="Harita">
+                    <!-- İstersen Google Maps iframe’ini buraya koy:
+                    <iframe src="https://www.google.com/maps?q=İstanbul&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    -->
+                    <div class="map-placeholder">
+                        <span>Harita alanı – Lokasyonunu ekle</span>
+                    </div>
+                </div>
+
+                <div class="regions-card">
+                    @Html.Partial("_Regions")
+                </div>
+            </aside>
+
+            <!-- SAĞ SÜTUN: Form -->
+            <div class="form-card">
+                <h3>Keşif / İletişim Formu</h3>
+
+                <form method="post"
+                      action="/Appointment/Create"
+                      enctype="multipart/form-data"
+                      novalidate
+                      id="contactForm"
+                      aria-describedby="formNote">
+
+                    <!-- Anti-spam honeypot (görünmez) -->
+                    <div class="hp" aria-hidden="true">
+                        <label for="Website">Website</label>
+                        <input id="Website" name="Website" type="text" tabindex="-1" autocomplete="off" />
+                    </div>
+
+                    <p id="formNote" class="form-note">
+                        * işaretli alanlar zorunludur. Bilgileriniz KVKK kapsamında yalnızca tekliflendirme amacıyla işlenecektir.
+                    </p>
+
+                    <div class="row">
+                        <div class="col">
+                            <label for="Name">Ad Soyad*</label>
+                            <input id="Name" name="Name" required autocomplete="name" />
+                        </div>
+
+                        <div class="col">
+                            <label for="Phone">Telefon*</label>
+                            <input id="Phone" name="Phone" required
+                                   inputmode="tel"
+                                   autocomplete="tel"
+                                   placeholder="05xx xxx xx xx"
+                                   pattern="^\+?\d[\d\s\-]{9,}$"
+                                   title="Lütfen geçerli bir telefon giriniz" />
+                        </div>
+
+                        <div class="full">
+                            <label for="Email">E-Posta</label>
+                            <input id="Email" name="Email" type="email" autocomplete="email" placeholder="ornek@alan.com" />
+                        </div>
+
+                        <div class="col">
+                            <label for="City">İl</label>
+                            <input id="City" name="City" autocomplete="address-level1" />
+                        </div>
+
+                        <div class="col">
+                            <label for="District">İlçe</label>
+                            <input id="District" name="District" autocomplete="address-level2" />
+                        </div>
+
+                        <div class="full">
+                            <label for="Address">Adres*</label>
+                            <input id="Address" name="Address" required autocomplete="street-address" />
+                        </div>
+
+                        <div class="col">
+                            <label for="Service">Hizmet*</label>
+                            <input id="Service" name="Service" required placeholder="Örn. Bina yıkımı" />
+                        </div>
+
+                        <div class="col">
+                            <label for="DesiredDate">İstenen Tarih</label>
+                            <input id="DesiredDate" name="DesiredDate" type="date" />
+                        </div>
+
+                        <div class="col">
+                            <label for="Budget">Tahmini Bütçe</label>
+                            <input id="Budget" name="Budget" placeholder="Örn. 150.000 ₺" />
+                        </div>
+
+                        <div class="col">
+                            <label for="ProjectArea">Alan (m²)</label>
+                            <input id="ProjectArea" name="ProjectArea" type="number" min="0" inputmode="numeric" />
+                        </div>
+
+                        <div class="col">
+                            <label for="Floors">Kat Adedi</label>
+                            <input id="Floors" name="Floors" type="number" min="0" inputmode="numeric" />
+                        </div>
+
+                        <div class="full">
+                            <label for="Message">Mesaj</label>
+                            <textarea id="Message" name="Message" rows="4" placeholder="Projenizi kısaca anlatın..."></textarea>
+                        </div>
+
+                        <div class="full">
+                            <label for="Attachment">Ek Dosya (opsiyonel)</label>
+                            <input id="Attachment" name="Attachment" type="file" accept=".pdf,.jpg,.jpeg,.png,.webp" />
+                            <small class="hint">PDF, JPG/PNG/WEBP yükleyebilirsiniz.</small>
+                        </div>
+
+                        <div class="full agree">
+                            <label class="checkbox">
+                                <input type="checkbox" id="kvkk" required />
+                                <span>KVKK aydınlatma metnini okudum ve onaylıyorum.</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <button class="btn-primary" type="submit" id="submitBtn">Gönder</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    :root {
+        --c-primary: #00B8B8;
+        --c-primary-dark: #009090;
+        --c-text: #0f172a;
+        --c-muted: #64748b;
+        --c-bg: #f8fafc;
+        --radius: 14px;
+        --shadow: 0 8px 22px rgba(2,8,23,.08);
+    }
+
+    .section {
+        padding: 70px 0
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 18px
+    }
+
+    .section-title {
+        font-size: 32px;
+        font-weight: 900;
+        color: var(--c-primary-dark);
+        margin: 0 0 24px
+    }
+
+    .grid-2 {
+        display: grid;
+        grid-template-columns: 1fr 1.1fr;
+        gap: 24px
+    }
+    @@media (max-width:992px) {
+        .grid-2
+
+    {
+        grid-template-columns: 1fr
+    }
+
+    }
+
+    .info-card, .form-card {
+        background: #fff;
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        padding: 20px
+    }
+
+    .info-block {
+        margin-bottom: 16px
+    }
+
+    .link {
+        color: var(--c-primary);
+        font-weight: 800;
+        text-decoration: none
+    }
+
+        .link:hover {
+            color: var(--c-primary-dark)
+        }
+
+    .map-card {
+        margin: 16px 0 20px
+    }
+
+        .map-card iframe {
+            width: 100%;
+            height: 220px;
+            border: 0;
+            border-radius: 12px
+        }
+
+    .map-placeholder {
+        height: 220px;
+        display: grid;
+        place-items: center;
+        border-radius: 12px;
+        background: linear-gradient(145deg,#eefbfb,#d4f3f3);
+        color: #0b6060;
+        font-weight: 700
+    }
+
+    .form-card h3 {
+        margin: 0 0 12px;
+        font-size: 24px;
+        font-weight: 900;
+        color: var(--c-primary)
+    }
+
+    .form-note {
+        color: var(--c-muted);
+        margin: 6px 0 18px
+    }
+
+    .row {
+        display: grid;
+        grid-template-columns: repeat(2,minmax(0,1fr));
+        gap: 14px
+    }
+
+        .row .full {
+            grid-column: 1/-1
+        }
+
+        .row .col {
+            display: flex;
+            flex-direction: column
+        }
+    @@media (max-width:640px) {
+        .row
+
+    {
+        grid-template-columns: 1fr
+    }
+
+    }
+
+    label {
+        font-weight: 700;
+        color: #0b3b3b;
+        margin: 2px 0 6px
+    }
+
+    input, textarea {
+        border: 1.5px solid #e2e8f0;
+        border-radius: 10px;
+        padding: 11px 12px;
+        font: inherit;
+        color: var(--c-text);
+        transition: border-color .2s, box-shadow .2s;
+        background: #fff
+    }
+
+        input:focus, textarea:focus {
+            border-color: var(--c-primary);
+            box-shadow: 0 0 0 3px rgba(0,184,184,.15);
+            outline: 0
+        }
+
+    .hint {
+        display: block;
+        margin-top: 6px;
+        color: var(--c-muted)
+    }
+
+    .agree .checkbox {
+        display: flex;
+        gap: 10px;
+        align-items: flex-start
+    }
+
+    .agree input[type="checkbox"] {
+        margin-top: 4px
+    }
+
+    .btn-primary {
+        display: inline-block;
+        background: var(--c-primary);
+        color: #fff;
+        border: 2px solid var(--c-primary);
+        padding: 12px 22px;
+        border-radius: 12px;
+        font-weight: 900;
+        cursor: pointer;
+        box-shadow: 0 8px 18px rgba(0,184,184,.25);
+        transition: background .2s,border-color .2s,transform .05s
+    }
+
+        .btn-primary:hover {
+            background: var(--c-primary-dark);
+            border-color: var(--c-primary-dark)
+        }
+
+        .btn-primary:active {
+            transform: translateY(1px)
+        }
+
+        .btn-primary[disabled] {
+            opacity: .65;
+            cursor: not-allowed
+        }
+
+    /* Honeypot */
+    .hp {
+        position: absolute;
+        left: -9999px;
+        top: auto;
+        width: 1px;
+        height: 1px;
+        overflow: hidden
+    }
+</style>
+
+@section Scripts {
+    <script>
+        // Submit UX: butonu kilitle, "Gönderiliyor..."
+        (function(){
+          const form = document.getElementById('contactForm');
+          const btn  = document.getElementById('submitBtn');
+          if(!form || !btn) return;
+
+          form.addEventListener('submit', function(ev){
+            // honeypot doluysa iptal
+            const hp = form.querySelector('input[name="Website"]');
+            if (hp && hp.value.trim() !== "") {
+              ev.preventDefault();
+              alert("İşleminiz gerçekleştirilemedi. Lütfen tekrar deneyin.");
+              return;
+            }
+
+            // temel HTML5 validity
+            if(!form.checkValidity()){
+              // tarayıcının yerleşik uyarılarını tetikle
+              return;
+            }
+
+            btn.disabled = true;
+            const old = btn.textContent;
+            btn.textContent = "Gönderiliyor…";
+            // 10 sn sonra otomatik geri al (sunucu dönmezse)
+            setTimeout(()=>{ if(btn.disabled){ btn.disabled=false; btn.textContent=old; } }, 10000);
+          });
+        })();
+    </script>
+}

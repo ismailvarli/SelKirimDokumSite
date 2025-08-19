@@ -1,0 +1,20 @@
+@{
+    ViewData["Title"] = "Randevu Talebi | Sel Kırım Döküm";
+}
+<section class="section">
+ <div class="container">
+  <h1>Randevu Talebi</h1>
+  @Html.Partial("_Alerts")
+  <form method="post" action="/Appointment/Create">
+    <div class="row">
+      <div><label>Ad Soyad*</label><input name="Name" required /></div>
+      <div><label>Telefon*</label><input name="Phone" required /></div>
+      <div class="full"><label>E-Posta</label><input name="Email" type="email" /></div>
+      <div class="full"><label>Adres*</label><input name="Address" required /></div>
+      <div><label>Hizmet*</label><input name="Service" required /></div>
+      <div class="full"><label>Mesaj</label><textarea name="Message" rows="4"></textarea></div>
+    </div>
+    <button class="btn" type="submit">Gönder</button>
+  </form>
+ </div>
+</section>

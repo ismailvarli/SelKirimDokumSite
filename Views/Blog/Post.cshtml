@@ -1,0 +1,18 @@
+@model SelKirimDokumSite.Models.BlogPost
+@{
+    ViewData["Title"] = @Model.Title + " | Blog | Sel Kırım Döküm";
+    ViewData["Description"] = @Model.Excerpt;
+}
+<section class="section content">
+ <div class="container">
+  <p class="small"><a href="/Blog">← Tüm Yazılar</a></p>
+  <h1>@Model.Title</h1>
+  <p class="small">@Model.Date • @Model.Category</p>
+  @if(!string.IsNullOrEmpty(Model.CoverImage)) {
+    <figure class="img"><img src="@Model.CoverImage" alt="@Model.Title"><figcaption>@Model.Title</figcaption></figure>
+  }
+  <article>
+    @Html.Raw(Model.Content)
+  </article>
+ </div>
+</section>

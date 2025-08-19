@@ -1,0 +1,15 @@
+@model SelKirimDokumSite.Models.Service
+<a class="card service-card" href="/Services/@Model.Slug">
+    <div class="icon">
+        @if (!string.IsNullOrWhiteSpace(Model.Icon) && Model.Icon.EndsWith(".svg"))
+        {
+            <img src="~/images/icons/@Model.Icon" alt="@Model.Title ikon" style="height:44px;" />
+        }
+        else
+        {
+            @Html.Raw(Model.Icon ?? "")
+        }
+    </div>
+    <h3>@Model.Title</h3>
+    <p>@Model.Excerpt</p>
+</a>

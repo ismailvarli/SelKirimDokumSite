@@ -1,0 +1,21 @@
+@model IEnumerable<SelKirimDokumSite.Models.BlogPost>
+@{
+    ViewData["Title"] = "Blog | Sel Kırım Döküm";
+    ViewData["Description"] = "Yıkım, kırım, atık yönetimi, mevzuat ve teknik ipuçları.";
+}
+<section class="section">
+ <div class="container">
+  <h1>Blog</h1>
+  <div class="grid-3">
+    @foreach (var p in Model)
+    {
+      <a href="/Blog/Post/@p.Slug" class="card">
+        @if(!string.IsNullOrEmpty(p.CoverImage)) { <img src="@p.CoverImage" alt="@p.Title" style="width:100%;height:auto;border-radius:12px;margin-bottom:10px;border:1px solid #eee;" /> }
+        <h3>@p.Title</h3>
+        <p class="small">@p.Date • @p.Category</p>
+        <p>@p.Excerpt</p>
+      </a>
+    }
+  </div>
+ </div>
+</section>

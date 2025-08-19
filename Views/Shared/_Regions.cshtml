@@ -1,0 +1,53 @@
+@{
+    var cities = new[] {
+        "İstanbul (Avrupa): Arnavutköy, Başakşehir, Büyükçekmece, Beylikdüzü, Küçükçekmece, Esenyurt",
+        "İstanbul (Anadolu): Pendik, Tuzla, Kartal, Maltepe, Ümraniye, Sancaktepe",
+        "Kocaeli: Gebze, Çayırova, Darıca, İzmit",
+        "Tekirdağ: Çorlu, Çerkezköy, Kapaklı",
+        "Sakarya, Bursa, Yalova (sevkli projeler)"
+    };
+}
+<section class="section content" id="bolgeler">
+    <div class="container">
+        <h2>Hizmet Verdiğimiz Bölgeler</h2>
+        <div class="grid-2">
+            <div>
+                <p>Merkez üssümüz İstanbul’dur. Endüstriyel ve konut ölçekli projelerde Marmara genelinde hızlı mobilize olur, keşif ve uygulamayı kısa süre içinde planlarız. Büyük metrajlı veya özel ekipman gerektiren işlerde Türkiye geneli mobil ekip kurarız.</p>
+                <ul>
+                    @foreach (var c in cities)
+                    {
+                        <li><strong>@c</strong></li>
+                    }
+                </ul>
+            </div>
+            <div class="kutu">
+                <strong>Not:</strong> Fabrika sökümü ve ağır tonajlı projelerde, şehir dışı sevk organizasyonunu (lowbed, tır) biz üstleniyoruz.
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .grid-2 {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 20px;
+    }
+
+    .kutu {
+        padding: 15px;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        background: #f9f9f9;
+        font-size: 15px;
+    }
+
+    /* Mobil uyum */
+    @@media (max-width: 768px) {
+        .grid-2
+
+    {
+        grid-template-columns: 1fr;
+    }
+
+    }</style>

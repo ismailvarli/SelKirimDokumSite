@@ -1,0 +1,147 @@
+@{
+    ViewData["Title"] = "Hizmetler | Sel Kırım Döküm";
+    ViewData["Description"] = "Bina yıkımı, fabrika sökümü, kırım, hafriyat & moloz atımı, beton kesme/delme, asbest sökümü.";
+}
+<section class="services section" aria-label="Hizmetler">
+    <div class="container">
+        <h1 class="section-title">Hizmetler</h1>
+        <p class="lead"><strong>Sel Kırım Döküm</strong>, endüstriyel tesislerden konut projelerine, kentsel dönüşümden küçük ölçekli tadilatlara kadar uzanan geniş bir yelpazede faaliyet gösteren, deneyimli ve uzman bir <strong>yıkım firması</strong>dır. Farklı ölçek ve zorluk seviyesindeki projelerde yalnızca hızlı sonuç almayı değil, aynı zamanda <strong>iş güvenliği</strong>, <strong>mevzuat uyumu</strong> ve <strong>çevresel sorumluluk</strong> kriterlerini de en üst düzeyde gözetir.</p>
+
+        <p>Her hizmet başlığımız altında yalnızca teknik uygulamaları değil, aynı zamanda <strong>metodoloji</strong>, <strong>risk yönetimi</strong>, <strong>çalışma güvenliği (İSG) prosedürleri</strong>, <strong>çevresel etki kontrolü</strong> ve <strong>teslim süreci yönetimi</strong> gibi kritik adımları detaylandırırız. Bu yaklaşım sayesinde müşterilerimiz; hangi <strong>yöntemlerin</strong> kullanılacağı, işin hangi <strong>takvimde</strong> sonuçlanacağı ve süreç boyunca hangi <strong>denetimlerin</strong> yapılacağı konusunda baştan sona <strong>şeffaf bilgi</strong>ye sahip olur.</p>
+
+        <p>Projelerimizde <strong>ruhsat</strong>, <strong>izin</strong> ve <strong>belediye süreçlerinin yönetimi</strong>, <strong>saha güvenlik planlarının</strong> oluşturulması, <strong>toz ve gürültü kontrolü</strong>, <strong>atıkların ayrıştırılması</strong> ve <strong>lisanslı sahalara sevki</strong> gibi aşamalar, tek merkezden ve bütüncül bir anlayışla yürütülür. Böylece yalnızca işin teknik kısmını değil, aynı zamanda sürecin <strong>hukuki</strong> ve <strong>çevresel sorumluluklarını</strong> da üstlenerek işverenler için <strong>güvenilir bir çözüm ortağı</strong> oluruz.</p>
+
+        <p>Kısacası, Sel Kırım Döküm olarak her projeyi yalnızca bir yıkım veya söküm işi değil, başından sonuna <strong>profesyonelce yönetilmesi gereken bir dönüşüm süreci</strong> olarak görüyoruz. Bu yaklaşımımız, bizi sektörde <strong>tercih edilen</strong> ve <strong>güven duyulan</strong> bir marka haline getirmektedir.</p>
+
+        <div class="grid-3">
+            @Html.Partial("_ServiceCard", new SelKirimDokumSite.Models.Service {
+            Title = "Bina Yıkımı",
+                        Icon = "hammer.svg",
+                        Slug = "BinaYikimi",
+                        Excerpt = "Ruhsatlı, kontrollü yıkım: makinalı ve manuel yöntemlerle güvenli uygulama."
+                        })
+            @Html.Partial("_ServiceCard", new SelKirimDokumSite.Models.Service {
+                        Title = "Fabrika & Endüstriyel Söküm",
+                        Icon = "factory.svg",
+                        Slug = "FabrikaSokum",
+                        Excerpt = "Hat sökümü, ekipman demontajı ve sahadan çıkarma, iş güvenliği odaklı."
+                        })
+            @Html.Partial("_ServiceCard", new SelKirimDokumSite.Models.Service {
+                        Title = "Kırım (Beton/Duvar/Şap)",
+                        Icon = "drill.svg",
+                        Slug = "Krim",
+                        Excerpt = "Hidrolik kırıcı ve el aletleriyle hassas kırım; titreşim ve toz kontrolü."
+                        })
+            @Html.Partial("_ServiceCard", new SelKirimDokumSite.Models.Service {
+                        Title = "Hafriyat & Moloz Atımı",
+                        Icon = "truck.svg",
+                        Slug = "HafriyatMoloz",
+                        Excerpt = "Lisanslı döküm sahalarına sevk; sevk irsaliyesi ve raporlama."
+                        })
+            @Html.Partial("_ServiceCard", new SelKirimDokumSite.Models.Service {
+                        Title = "Beton Kesme / Delme",
+                        Icon = "saw.svg",
+                        Slug = "BetonKesmeDelme",
+                        Excerpt = "Elmas tel ve karot teknolojileriyle net ve temiz kesimler."
+                        })
+            @Html.Partial("_ServiceCard", new SelKirimDokumSite.Models.Service {
+                        Title = "Çatı & Asbest Sökümü",
+                        Icon = "warning.svg",
+                        Slug = "AsbestSokumu",
+                        Excerpt = "Mevzuata uygun izolasyon, paketleme ve bertaraf süreçleri."
+                        })
+        </div>
+    </div>
+</section>
+
+<style>
+    :root {
+        --c-primary: #00B8B8;
+        --c-primary-dark: #009090;
+        --c-text: #0f172a;
+        --c-muted: #64748b;
+        --radius: 14px;
+        --shadow: 0 6px 18px rgba(2,8,23,.08);
+    }
+
+    .section {
+        padding: 70px 0
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 18px
+    }
+
+    .section-title {
+        font-size: 34px;
+        font-weight: 900;
+        color: var(--c-primary-dark);
+        margin-bottom: 16px
+    }
+
+    .lead {
+        font-size: 18px;
+        color: var(--c-text);
+        opacity: .95;
+        line-height: 1.7;
+        margin-bottom: 40px
+    }
+
+    .grid-3 {
+        display: grid;
+        grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+        gap: 24px;
+    }
+
+    /* ServiceCard genel stil */
+    .service-card {
+        background: #fff;
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        padding: 24px;
+        text-align: center;
+        transition: transform .2s ease, box-shadow .2s ease;
+    }
+
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(0,184,184,.15);
+        }
+
+        .service-card img {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 14px;
+        }
+
+        .service-card h3 {
+            margin: 8px 0;
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--c-primary);
+        }
+
+        .service-card p {
+            color: var(--c-text);
+            font-size: 15px;
+            line-height: 1.6
+        }
+
+        .service-card a {
+            display: inline-block;
+            margin-top: 14px;
+            padding: 8px 16px;
+            background: var(--c-primary);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+            .service-card a:hover {
+                background: var(--c-primary-dark)
+            }
+</style>

@@ -1,0 +1,280 @@
+@{
+    ViewData["Title"] = "Sel Kırım Döküm | Yıkım, Kırım, Fabrika Sökümü";
+    ViewData["Description"] = "Bina yıkımı, fabrika sökümü, beton kesme/delme, hafriyat ve moloz atımı. Ücretsiz keşif ve hızlı teklif – Sel Kırım Döküm.";
+}
+
+<!--------------------------- SAYFA STYLES (sayfaya özel) --------------------------->
+<style>
+    :root{
+        --c-primary:#00B8B8;   /* Turkuaz */
+        --c-primary-dark:#009090;
+        --c-text:#0f172a;
+        --c-muted:#64748b;
+        --c-bg:#f8fafc;
+        --radius:14px;
+        --shadow:0 6px 18px rgba(2,8,23,.08);
+    }
+    .container{max-width:1200px;margin:0 auto;padding:0 20px}
+    .lead{color:var(--c-muted);font-size:18px;line-height:1.75}
+    .btn,.btn-primary{
+        display:inline-block;padding:12px 20px;border-radius:10px;font-weight:700;text-decoration:none
+    }
+    .btn{background:#fff;border:2px solid var(--c-primary);color:var(--c-primary)}
+    .btn:hover{background:var(--c-primary);color:#fff}
+    .btn-primary{background:var(--c-primary);color:#fff;border:2px solid var(--c-primary)}
+    .btn-primary:hover{background:var(--c-primary-dark);border-color:var(--c-primary-dark)}
+    .section{padding:70px 0}
+    .section-title{font-size:32px;font-weight:800;color:var(--c-primary-dark);text-align:center;margin:0 0 26px}
+    .section-sub{color:var(--c-muted);text-align:center;max-width:800px;margin:0 auto 38px}
+
+    /* ---------------- Hero Slider ---------------- */
+    .hero{
+        position:relative;background:#000;color:#fff;overflow:hidden
+    }
+    .hero::after{/* turkuaz degradeli overlay */
+        content:"";position:absolute;inset:0;
+        background:linear-gradient(180deg,rgba(0,184,184,.55),rgba(0,144,144,.45));
+        pointer-events:none
+    }
+    .hero-inner{position:relative;z-index:2;padding:92px 0 110px;text-align:left}
+    .hero h1{font-size:42px;line-height:1.2;margin:0 0 10px;font-weight:900}
+    .hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px}
+
+    .slider{position:absolute;inset:0;z-index:1}
+    .slide{
+        position:absolute;inset:0;opacity:0;transition:opacity .8s ease;
+        background-size:cover;background-position:center
+    }
+    .slide.is-active{opacity:1}
+    .hero-badges{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
+    .badge{background:rgba(255,255,255,.9);color:var(--c-primary-dark);padding:6px 10px;border-radius:999px;font-weight:700;font-size:12px}
+
+    /* --------------- Hizmet Kartları --------------- */
+    .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px}
+    .card{
+        background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);
+        overflow:hidden;display:flex;flex-direction:column
+    }
+    .card img{width:100%;height:180px;object-fit:cover}
+    .card-body{padding:16px 16px 18px}
+    .card h3{margin:4px 0 10px;color:var(--c-primary);font-weight:800}
+    .card p{color:var(--c-text);opacity:.9;line-height:1.7}
+
+    /* --------------- Proje Galerisi --------------- */
+    .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+    .gallery a{
+        display:block;position:relative;border-radius:12px;overflow:hidden;box-shadow:var(--shadow)
+    }
+    .gallery img{width:100%;height:180px;object-fit:cover;transition:transform .4s}
+    .gallery a:hover img{transform:scale(1.04)}
+    .chip{position:absolute;left:10px;bottom:10px;background:rgba(0,184,184,.95);color:#fff;padding:4px 10px;border-radius:10px;font-size:12px;font-weight:700}
+
+    /* --------------- Süreç Akışı --------------- */
+    .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;counter-reset:step}
+    .step{
+        background:#fff;border-left:6px solid var(--c-primary);padding:16px;border-radius:12px;box-shadow:var(--shadow)
+    }
+    .step h4{margin:6px 0 8px}
+    .step::before{
+        counter-increment:step;content:counters(step,".")".";
+        font-weight:900;color:var(--c-primary-dark);margin-right:6px
+    }
+
+    /* --------------- SSS (Accordion) --------------- */
+    .faq{max-width:900px;margin:0 auto}
+    .faq details{
+        background:#fff;border-radius:12px;margin-bottom:12px;padding:14px 16px;box-shadow:var(--shadow)
+    }
+    .faq summary{cursor:pointer;font-weight:800;color:var(--c-primary-dark);outline:none}
+    .faq p{margin:10px 0 0;color:var(--c-text);line-height:1.7}
+
+    /* --------------- CTA --------------- */
+    .cta-band{
+        background:linear-gradient(90deg,var(--c-primary),var(--c-primary-dark));color:#fff;border-radius:16px;
+        padding:28px;display:flex;flex-direction:column;gap:12px;align-items:flex-start;box-shadow:var(--shadow)
+    }
+    .cta-band h3{margin:0;font-size:26px}
+    .cta-actions{display:flex;gap:10px;flex-wrap:wrap}
+
+    @@media (max-width:992px){
+        .hero-inner{padding:76px 0 90px}
+        .hero h1{font-size:34px}
+    }
+</style>
+
+<!--------------------------- HERO (Slider + içerik) --------------------------->
+<section class="hero" aria-label="Sel Kırım Döküm Kapak">
+    <!-- SLIDER GÖRSELLERİ: Aşağıdaki url'leri kendi görsellerinle değiştir -->
+    <div class="slider" id="heroSlider">
+        <div class="slide is-active" style="background-image:url('/images/hero/yikim-01.jpg')" role="img" aria-label="Bina yıkımı sahası"></div>
+        <div class="slide" style="background-image:url('/images/hero/fabrika-sokum-01.jpg')" role="img" aria-label="Fabrika sökümü"></div>
+        <div class="slide" style="background-image:url('/images/hero/beton-kesme-01.jpg')" role="img" aria-label="Beton kesme"></div>
+        <div class="slide" style="background-image:url('/images/hero/hafriyat-01.jpg')" role="img" aria-label="Hafriyat ve moloz atımı"></div>
+    </div>
+
+    <div class="container hero-inner">
+        <h1>Endüstriyel <strong>Yıkım & Kırım</strong> — Hızlı, Güvenli, Mevzuata Uygun</h1>
+        <p class="lead">
+            <strong>Sel Kırım Döküm</strong>, endüstriyel ölçekte <strong>bina yıkımı</strong>, <strong>kırım</strong>, <strong>fabrika sökümü</strong>, 
+            <strong>beton kesme/delme</strong> ve <strong>hafriyat & moloz atımı</strong> alanlarında anahtar teslim çözümler sunar. Keşiften ruhsata, 
+            uygulamadan atık yönetimine kadar tüm adımları tek elden yönetir; hızlı, güvenli ve mevzuata uyumlu çalışır.
+        </p>
+        <div class="hero-badges">
+            <span class="badge">İSG Odaklı</span>
+            <span class="badge">Ruhsat & Mevzuat Uyumlu</span>
+            <span class="badge">Hızlı Mobil Ekip</span>
+            <span class="badge">Çevreye Duyarlı</span>
+        </div>
+        <div class="hero-cta">
+            <a class="btn" href="#kesif-form">Ücretsiz Keşif Talebi</a>
+            <a class="btn-primary" href="tel:+905325436837">Hemen Ara: 0532 543 68 37</a>
+        </div>
+    </div>
+</section>
+
+<!--------------------------- HİZMET KARTLARI --------------------------->
+<section class="section" id="hizmetler">
+    <div class="container">
+        <h2 class="section-title">Hizmetlerimiz</h2>
+        <p class="section-sub">İstanbul ve çevresinde uçtan uca <strong>yıkım</strong>, <strong>kırım</strong>, <strong>söküm</strong> ve <strong>atık yönetimi</strong> çözümleri.</p>
+
+        <div class="cards">
+            <!-- Görsel eklemek için src'yi değiştirmen yeterli -->
+            <article class="card">
+                <a href="/Services/BinaYikimi">
+                    <img src="/images/gallery/binayikimi.png"  alt="Bina yıkımı hizmeti görseli">
+                <div class="card-body">
+                    <h3>Bina Yıkımı</h3>
+                    <p>Küçük ölçekli yapılardan yüksek katlı betonarme binalara kadar, proje bazlı risk analizleri ve İSG prosedürleri ile hızlı ve güvenli yıkım.</p>
+                </div>
+                </a>            
+            </article>
+
+            <article class="card">
+                <a href="/Services/FabrikaSokum">
+                     <img src="~/images/gallery/fabrikasokumu.png" alt="Fabrika sökümü hizmeti görseli">
+                <div class="card-body">
+                    <h3>Fabrika Sökümü</h3>
+                    <p>Elektrik, mekanik, çelik konstrüksiyon ve hat sökümleri; çevreye duyarlı ayrıştırma ve geri kazanım süreçleri ile tesislerin kontrollü sökümü.</p>
+                </div>
+                </a>        
+            </article>
+
+            <article class="card">
+                <a href="/Services/BetonkesmeDelme">
+                     <img src="/images/gallery/kirimdokumgörsel.png" alt="Beton kesme ve delme hizmeti görseli">
+                <div class="card-body">
+                    <h3>Beton Kesme / Delme</h3>
+                    <p>Düşük titreşim ve düşük toz emisyonu hedefiyle hassas kesimler. Kapı/pencere boşluğu açma, derz ve kanal kesimleri.</p>
+                </div>
+                </a>
+               
+            </article>
+
+            <article class="card">
+                <a href="/Services/HafriyatMoloz">
+                    <img src="/images/gallery/hafriyat.png" alt="Hafriyat ve moloz atımı görseli">
+                <div class="card-body">
+                    <h3>Hafriyat & Moloz Atımı</h3>
+                    <p>Şantiye içi lojistik, moloz yükleme, lisanslı döküm sahalarına nakliye ve çevre mevzuatına uygun bertaraf.</p>
+                </div>
+                </a>
+            </article>
+        </div>
+    </div>
+</section>
+
+<!--------------------------- NEDEN BİZ? + SÜREÇ --------------------------->
+<section class="section">
+    <div class="container">
+        <h2 class="section-title">Neden Sel Kırım Döküm?</h2>
+        <p class="section-sub">Proje planlama, resmi izinler, iş güvenliği ve atık yönetimini tek çatı altında toplayarak <strong>zaman ve maliyet</strong> avantajı sağlarız.</p>
+
+        <div class="steps" style="margin-top:20px">
+            <div class="step">
+                <h4>Keşif & Risk Analizi</h4>
+                <p>Yerinde keşif ile yapısal analiz, tehlikeli malzeme kontrolü ve sahaya özel İSG planı hazırlanır.</p>
+            </div>
+            <div class="step">
+                <h4>İzin & Mevzuat</h4>
+                <p>Ruhsat, bildirim ve belediye süreçleri tarafımızca yürütülür; komşu yapı ve çevre güvenliği gözetilir.</p>
+            </div>
+            <div class="step">
+                <h4>Uygulama</h4>
+                <p>Modern ekipman ve uzman kadro ile kontrollü yıkım/kırım; toz, gürültü ve titreşim minimizasyonu.</p>
+            </div>
+            <div class="step">
+                <h4>Atık Yönetimi</h4>
+                <p>Ayrıştırma, geri kazanım ve lisanslı tesislere sevk ile çevreye duyarlı bertaraf süreçleri.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--------------------------- SSS --------------------------->
+<section class="section" id="sss" style="background:var(--c-bg);">
+    <div class="container">
+        <h2 class="section-title">Sıkça Sorulan Sorular</h2>
+        <div class="faq">
+            <details>
+                <summary>Yıkım için hangi izinler gerekir?</summary>
+                <p>Belediye yıkım ruhsatı, trafik ve çevre düzeni planı ile şantiye İSG planı temel dokümanlardır. Projenize göre ek izinler talep edilebilir.</p>
+            </details>
+            <details>
+                <summary>Toz ve gürültü kontrolünü nasıl sağlıyorsunuz?</summary>
+                <p>Sulama sistemleri, bariyerleme ve zaman kısıtlı çalışma planlarıyla gürültü ve tozu kontrol altında tutuyoruz.</p>
+            </details>
+            <details>
+                <summary>Atıklar nereye gönderiliyor?</summary>
+                <p>İnert ve tehlikeli atıklar ayrıştırılır, geri kazanıma uygun malzemeler değerlendirilir, kalanlar lisanslı döküm/bertaraf sahalarına sevk edilir.</p>
+            </details>
+        </div>
+    </div>
+</section>
+
+<!--------------------------- CTA + FORM --------------------------->
+<section class="section">
+    <div class="container">
+        <div class="cta-band">
+            <h3>Ücretsiz Keşif • Hızlı Teklif</h3>
+            <p style="margin:0;opacity:.95">Projenizi anlattığınızda aynı gün dönüş yapıyoruz. İstanbul’un her noktasına mobil ekiple hizmet.</p>
+            <div class="cta-actions">
+                <a class="btn-primary" href="tel:+905379202736">0537 920 27 36</a>
+                <a class="btn" href="#kesif-form">Keşif Formuna Git</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+@Html.Partial("_Pricing")
+@Html.Partial("_Regions")
+@Html.Partial("_KesifForm")
+
+<!--------------------------- SCRIPTS (slider + schema) --------------------------->
+@section Scripts {
+<script>
+/* Basit otomatik slider */
+(function(){
+  const slides=[...document.querySelectorAll('#heroSlider .slide')];
+  if(!slides.length) return;
+  let i=0;
+  setInterval(()=>{
+    slides[i].classList.remove('is-active');
+    i=(i+1)%slides.length;
+    slides[i].classList.add('is-active');
+  }, 4200);
+})();
+</script>
+
+<script type="application/ld+json">
+@Html.Raw(@"{
+  ""@context"": ""https://schema.org"",
+  ""@type"": ""LocalBusiness"",
+  ""name"": ""Sel Kırım Döküm"",
+  ""telephone"": ""+90 537 920 27 36"",
+  ""address"": { ""@type"": ""PostalAddress"", ""addressLocality"": ""İstanbul"", ""addressCountry"": ""TR"" },
+  ""areaServed"": ""Türkiye"",
+  ""url"": ""https://example.com/""
+}")
+</script>
+}

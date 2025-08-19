@@ -1,0 +1,17 @@
+/* --- Hamburger & Drawer --- */
+.hamburger { display:none; background:none; border:0; padding:8px; margin-right:8px; }
+.hamburger span { display:block; width:26px; height:3px; background:#111827; margin:5px 0; border-radius:3px; transition:transform .2s ease, opacity .2s ease; }
+@media (max-width: 900px) {
+  .hamburger { display:block; }
+  .desktop-only { display:none; }
+}
+.has-drawer { overflow-x:hidden; }
+.backdrop { position:fixed; inset:0; background:rgba(0,0,0,.45); backdrop-filter: blur(2px); z-index: 90; }
+.drawer { position:fixed; top:0; left:-320px; width:300px; height:100vh; background:#fff; border-right:1px solid #eee; box-shadow: 6px 0 20px rgba(0,0,0,.08); z-index: 99; transition:left .2s ease; display:flex; flex-direction:column; }
+.drawer.open { left:0; }
+.drawer-header { display:flex; align-items:center; justify-content:space-between; padding:14px 16px; border-bottom:1px solid #eee; font-weight:800; }
+.drawer-close { background:none; border:0; font-size:24px; line-height:1; cursor:pointer; padding:4px 8px; }
+.drawer-nav { display:flex; flex-direction:column; padding:10px 8px; }
+.drawer-nav a { padding:12px 10px; text-decoration:none; color:#111827; border-radius:10px; font-weight:600; }
+.drawer-nav a:hover { background:#f3f4f6; }
+.drawer-nav .cta { background: var(--primary); color:#fff; text-align:center; margin: 8px 10px; }

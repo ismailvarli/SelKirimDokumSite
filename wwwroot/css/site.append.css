@@ -1,0 +1,9 @@
+/* ---------- Content Extensions ---------- */
+.section .content p { margin-bottom: 16px; line-height: 1.7; }
+figure.img { margin: 0 0 16px 0; }
+figure.img img { width: 100%; height: auto; border-radius: 14px; border: 1px solid #eee; }
+figure.img figcaption { font-size: 14px; color: #6b7280; margin-top: 6px; }
+.gallery { display: grid; gap: 14px; grid-template-columns: repeat(3, 1fr); }
+@media (max-width: 900px) { .gallery { grid-template-columns: 1fr; } }
+blockquote.note { background: #fff; padding: 14px; border-radius: 12px; border-left: 4px solid var(--primary); }
+.kutu { background:#f9fafb; border:1px solid #eee; border-radius:14px; padding:16px; }
