@@ -2,19 +2,7 @@
     ViewData["Title"] = "Bina Yıkımı | Sel Kırım Döküm";
     ViewData["Description"] = "Profesyonel bina yıkımı hizmetimiz; taşıyıcı sistemin ayrıntılı incelenmesi, komşu yapı etkilerinin değerlendirilmesi ve erişim/lojistik planı ile başlar. ";
 }
-@section Scripts {
-<script type="application/ld+json">
-@Html.Raw(@"{
-  ""@context"": ""https://schema.org"",
-  ""@type"": ""Service"",
-  ""name"": ""Bina Yıkımı"",
-  ""provider"": {
-    ""@type"": ""LocalBusiness"",
-    ""name"": ""Sel Kırım Döküm""
-  },
-  ""areaServed"": ""Türkiye""
-}")
-</script>
+
 }
 <section class="section content">
  <div class="container">
@@ -48,3 +36,12 @@ Her projede disiplinli yaklaşım, zamanında teslim ve şeffaf hizmet ilkelerim
   <p><a class="btn" href="/#kesif-form">Ücretsiz keşif için formu doldurun</a></p>
  </div>
 </section>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17515828950"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-17515828950');
+</script>

@@ -11,5 +11,10 @@ namespace SelKirimDokumSite.Controllers
         public IActionResult HafriyatMoloz() => View();
         public IActionResult BetonKesmeDelme() => View();
         public IActionResult AsbestSokumu() => View();
+        public IActionResult ellekirim() => View();
+        public IActionResult mutfakkirim() => View();
+        public IActionResult fayanskirim() => View();
+        public IActionResult hiltikirim() => View();
+        public IActionResult kompresorlukirim() => View();
     }
 }

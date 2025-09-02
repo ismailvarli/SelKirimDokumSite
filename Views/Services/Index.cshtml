@@ -18,42 +18,79 @@
             Title = "Bina Yıkımı",
                         Icon = "hammer.svg",
                         Slug = "BinaYikimi",
-                        Excerpt = "Ruhsatlı, kontrollü yıkım: makinalı ve manuel yöntemlerle güvenli uygulama."
+                        Excerpt = "Ruhsatlı, kontrollü bina yıkımı: iş güvenliği standartlarına uygun makinalı ve manuel yöntemlerle güvenli uygulama."
                         })
             @Html.Partial("_ServiceCard", new SelKirimDokumSite.Models.Service {
                         Title = "Fabrika & Endüstriyel Söküm",
                         Icon = "factory.svg",
                         Slug = "FabrikaSokum",
-                        Excerpt = "Hat sökümü, ekipman demontajı ve sahadan çıkarma, iş güvenliği odaklı."
+                        Excerpt = "Endüstriyel hatların, makinelerin ve ağır ekipmanların profesyonel demontajı ve sahadan güvenli çıkarılması."
                         })
             @Html.Partial("_ServiceCard", new SelKirimDokumSite.Models.Service {
                         Title = "Kırım (Beton/Duvar/Şap)",
                         Icon = "drill.svg",
                         Slug = "Krim",
-                        Excerpt = "Hidrolik kırıcı ve el aletleriyle hassas kırım; titreşim ve toz kontrolü."
+                        Excerpt = "Beton, duvar ve şap kırımında hidrolik kırıcı ve el aletleriyle hassas, titreşim ve toz kontrollü işlemler."
                         })
             @Html.Partial("_ServiceCard", new SelKirimDokumSite.Models.Service {
                         Title = "Hafriyat & Moloz Atımı",
                         Icon = "truck.svg",
                         Slug = "HafriyatMoloz",
-                        Excerpt = "Lisanslı döküm sahalarına sevk; sevk irsaliyesi ve raporlama."
+                        Excerpt = "Hafriyat, inşaat ve yıkım atıklarının lisanslı döküm sahalarına sevki; sevk irsaliyesi ve raporlama garantisiyle."
                         })
             @Html.Partial("_ServiceCard", new SelKirimDokumSite.Models.Service {
                         Title = "Beton Kesme / Delme",
                         Icon = "saw.svg",
                         Slug = "BetonKesmeDelme",
-                        Excerpt = "Elmas tel ve karot teknolojileriyle net ve temiz kesimler."
+                        Excerpt = "Elmas tel ve karot teknolojileri ile net, temiz ve hassas beton kesme ve delme uygulamaları."
                         })
             @Html.Partial("_ServiceCard", new SelKirimDokumSite.Models.Service {
                         Title = "Çatı & Asbest Sökümü",
-                        Icon = "warning.svg",
+                        Icon = "asbestos.svg",
                         Slug = "AsbestSokumu",
-                        Excerpt = "Mevzuata uygun izolasyon, paketleme ve bertaraf süreçleri."
+                        Excerpt = "Asbest ve çatı malzemelerinin mevzuata uygun izolasyon, paketleme ve güvenli bertaraf süreçleri."
+                        })
+            @Html.Partial("_ServiceCard", new SelKirimDokumSite.Models.Service {
+                        Title = "Elle Kırım Hizmetleri",
+                        Icon = "hand-tools.svg",
+                        Slug = "ellekirim",
+                        Excerpt = "Dar alanlarda hassas, gürültüsüz ve kontrollü elle kırım işlemleri; iş güvenliği odaklı çözümler."
+                        })
+            @Html.Partial("_ServiceCard", new SelKirimDokumSite.Models.Service {
+                        Title = "Fayans Kırım Hizmetleri",
+                        Icon = "tiles.svg",
+                        Slug = "fayanskirim",
+                        Excerpt = "Banyo, mutfak ve zemin fayanslarının hızlı, temiz ve kontrollü kırımı; yeni uygulamalar için hazır hale getirme."
+                        })
+            @Html.Partial("_ServiceCard", new SelKirimDokumSite.Models.Service {
+                        Title = "Mutfak Kırım Hizmetleri",
+                        Icon = "kitchen.svg",
+                        Slug = "mutfakkirim",
+                        Excerpt = "Mutfak tezgâhı, dolap ve seramiklerinin sökülmesi ve kırımı; tadilat için profesyonel hazırlık."
+                        })
+            @Html.Partial("_ServiceCard", new SelKirimDokumSite.Models.Service {
+                        Title = "Hilti ile Kırım Hizmeti",
+                        Icon = "hilti.svg",
+                        Slug = "hiltikirim",
+                        Excerpt = "Hilti makineleri ile hızlı, güçlü ve kontrollü kırım; kısa sürede verimli çözümler."
+                        })
+            @Html.Partial("_ServiceCard", new SelKirimDokumSite.Models.Service {
+                        Title = "Kompresörlü Kırım Hizmeti",
+                        Icon = "compressor.svg",
+                        Slug = "Kompresorlukirim",
+                        Excerpt = "Büyük alanlarda ve kalın betonlarda kompresörlü kırım; güçlü ve endüstriyel çözümler."
                         })
         </div>
-    </div>
-</section>
 
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17515828950"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'AW-17515828950');
+</script>
 <style>
     :root {
         --c-primary: #00B8B8;
